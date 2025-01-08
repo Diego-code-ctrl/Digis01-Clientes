@@ -58,9 +58,18 @@ input {
     box-sizing: border-box;
 }
 
+.input-valid {
+    outline: none;
+    border-color: #42ab39;
+}
+
+.input-invalid {
+    outline: none;
+    border-color: #e41313;
+}
+
 input:focus {
     outline: none;
-    border-color: #5c6bc0;
     box-shadow: 0 0 5px rgba(92, 107, 192, 0.5);
 }
 
