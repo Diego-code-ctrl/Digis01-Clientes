@@ -1,59 +1,57 @@
-# PruebaTecnica
+#  Aplicación Front-End en Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Este repositorio contiene el front-end para un sistema de gestión de clientes desarrollado con Angular, TypeScript y SCSS. La aplicación interactúa con una API basada en Java para obtener y gestionar los datos de los clientes.
 
-## Development server
+## Características
 
-To start a local development server, run:
+- **Ver clientes registrados**: Muestra una lista de todos los clientes recuperados de la base de datos a través de la API.
+- **Agregar nuevos clientes**:
+  - Individualmente a través de un formulario de registro.
+  - Carga masiva utilizando un archivo `.txt`, que se puede subir directamente desde el navegador.
 
-```bash
-ng serve
+## Requisitos previos
+
+Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
+
+- **Node.js** (v16 o superior)
+- **Angular CLI** (v18 o superior): Instálalo globalmente con `npm install -g @angular/cli`.
+
+## Instrucciones para la carga de archivos
+
+- La funcionalidad de carga masiva acepta archivos con extensión `.txt`.
+
+- Cada línea en el archivo `.txt` debe representar un cliente con sus respectivos datos. Por ejemplo:
+
+  ```
+  Juan Perez|juanperez@ejemplo.com|123456789
+  Maria Lopez|marialopez@ejemplo.com|987654321
+  ```
+
+- Sube el archivo a través de la sección dedicada en la aplicación.
+
+## Estructura del proyecto
+
+```
+├── src
+│   ├── app
+│   │   ├── pages
+│   │   │   └── inicio
+│   ├── services
+│   ├── styles
+│   └── index.html
+└── angular.json
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Integración con la API
 
-## Code scaffolding
+La aplicación se comunica con la API backend para:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Obtener la lista de clientes registrados.
+- Enviar nuevos registros de clientes.
+- Procesar cargas masivas de clientes.
 
-```bash
-ng generate component component-name
-```
+Asegúrate de que la API esté ejecutándose y sea accesible antes de iniciar la aplicación de Angular con los puertos correspondientes.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Scripts
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `ng serve`: Inicia el servidor de desarrollo.
