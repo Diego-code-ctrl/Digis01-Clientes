@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="header">
+        <h1>Clientes 2025</h1>
+    </div>
+
+    <div class="content">
+        <div class="main-panel">
+            <div class="form-container">
+                <form class="registro" [formGroup]="formCliente" (submit)="registrarCliente()">
+                    <h2>Registrar Cliente</h2>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input
+                            type="text"
+                            formControlName="nombre"
+                            id="nombre"
+                            placeholder="Nombre del cliente"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('nombre')?.valid, 'input-invalid': !formCliente.get('nombre')?.valid}" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidoPaterno">Apellido Paterno</label>
+                        <input
+                            type="text"
+                            formControlName="apellidoPaterno"
+                            id="apellidoPaterno"
+                            placeholder="Apellido Paterno"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('apellidoPaterno')?.valid, 'input-invalid': !formCliente.get('apellidoPaterno')?.valid}" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidoMaterno">Apellido Materno</label>
+                        <input
+                            type="text"
+                            formControlName="apellidoMaterno"
+                            id="apellidoMaterno"
+                            placeholder="Apellido Materno"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('apellidoMaterno')?.valid, 'input-invalid': !formCliente.get('apellidoMaterno')?.valid}" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input
+                            type="text"
+                            formControlName="direccion"
+                            id="direccion"
+                            placeholder="Dirección del cliente"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('direccion')?.valid, 'input-invalid': !formCliente.get('direccion')?.valid}" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input
+                            type="text"
+                            formControlName="telefono"
+                            id="telefono"
+                            placeholder="Teléfono del cliente"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('telefono')?.valid, 'input-invalid': !formCliente.get('telefono')?.valid}" 
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <input
+                            type="email"
+                            formControlName="correo"
+                            id="correo"
+                            placeholder="Correo electrónico"
+                            required
+                            [ngClass]="{'input-valid': formCliente.get('correo')?.valid, 'input-invalid': !formCliente.get('correo')?.valid}" 
+                        />
+                    </div>
+                    <button type="submit" class="btn-submit" [disabled]="!formCliente.valid" [ngClass]="{'btn-valid': formCliente.valid, 'btn-invalid': !formCliente.valid}">
+                        Registrar Cliente
+                    </button>
+                </form>
+
+                <div class="archivo">
+                    <h3>Carga Masiva</h3>
+                    <input type="file" (change)="onFileChange($event)" accept=".txt" />
+                    <button
+                        type="submit"
+                        class="btn-submit"
+                        [disabled]="!archivo"
+                        [ngClass]="{'btn-valid': archivo, 'btn-invalid': !archivo}"
+                        (click)="cargaMasiva()">
+                        Subir Archivo
+                    </button>
+                </div>
+            </div>
+
+            <div class="registros">
+                <h3>Clientes Registrados</h3>
+                @if (listaClientes.length > 0) {
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (cli of listaClientes; track $index) {
+                                    <tr>
+                                        <td>{{ cli.nombre }}</td>
+                                        <td>{{ cli.apellidoPaterno }}</td>
+                                        <td>{{ cli.apellidoMaterno }}</td>
+                                        <td>{{ cli.direccion }}</td>
+                                        <td>{{ cli.telefono }}</td>
+                                        <td>{{ cli.correo }}</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                @if(listaClientes.length === 0) {
+                    <p>No hay clientes registrados aún.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
